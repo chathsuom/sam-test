@@ -9,6 +9,11 @@ Globals:
   Function:
     Timeout: 3
     MemorySize: 128
+Parameters:
+  Revision:
+    Type: String
+    Description: Revisions
+
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
@@ -22,7 +27,7 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-      ImageUri: '040536061213.dkr.ecr.ap-southeast-2.amazonaws.com/gayan-test:helloworldfunction-dab2937259a5-python3.9-v1'
+      ImageUri: !Sub "040536061213.dkr.ecr.ap-southeast-2.amazonaws.com/gayan-test:${Revision}"
 Outputs:
   HelloWorldApi:
     Description: API Gateway endpoint URL for Prod stage for Hello World function
